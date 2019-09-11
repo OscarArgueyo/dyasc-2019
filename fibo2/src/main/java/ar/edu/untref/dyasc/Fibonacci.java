@@ -45,6 +45,10 @@ public class Fibonacci
             Collections.reverse(this.numbers);
         }
 
+        if(this.orientation == Orientation.VERTICAL){
+            System.out.println("");
+        }
+
         for (Integer element : this.numbers) {
             if(this.orientation == Orientation.VERTICAL){
                 System.out.println(element.toString());

@@ -4,52 +4,81 @@ import ar.edu.untref.dyasc.Fibonacci;
 import ar.edu.untref.dyasc.Order;
 import ar.edu.untref.dyasc.Orientation;
 
-import java.util.ArrayList;
-
 public class Program {
+    static Fibonacci fibo;
 
     public static void main(String[] args) {
-        ArrayList<Integer> fibonacci_numbers = new ArrayList<Integer>();
+        fibo = new Fibonacci();
         int number;
+
+        /**
+         * Caso con dos parametros
+         */
+        if (args.length == 2 && validateArguments(args)){
+            number = Integer.parseInt(args[1]);
+            System.out.printf("fibo<%s>: " , number);
+            fibo.generateSequence(number);
+            fibo.printSequence();
+        }
+
+        /**
+         * Caso con un solo parametro, se asume el entero de fibo1
+         */
         if (args.length == 1)
         {
-            number = Integer.parseInt(args[0]);
-            System.out.printf("fibo<%s>: " , number);
-            generateFibonacciSequence(number , fibonacci_numbers);
-            printFibonacciSequence(fibonacci_numbers);
-            System.out.println("");
+            try {
 
-        }
-        else
-            System.out.println("Se debe ingresar solo un argumento.");
-
-    }
-
-    public static void generateFibonacciSequence(int n , ArrayList<Integer> numbers){
-        Integer fib = 1, prevFib = 1, result=0;
-        if (n > 2){
-            numbers.add(result);
-            numbers.add(fib);
-            for(int i=0; i<n-2; i++) {
-                    numbers.add(fib);
-                    int temp = fib;
-                    fib+= prevFib;
-                    prevFib = temp;
-                }
+                number = Integer.parseInt(args[0]);
+                System.out.printf("fibo<%s>: " , number);
+                fibo.generateSequence(number);
+                fibo.printSequence();
             }
-        if( n == 2) {
-            numbers.add(result);
-            numbers.add(fib);
+            catch (NumberFormatException nfe) {
+                System.out.println("Opción no válida");
+                System.exit(1);
+            }
+
         }
-        if( n == 1) {
-            numbers.add(result);
+        if (args.length != 2 && args.length !=1 ){
+            System.out.println("Cantidad de argumentos invalidos.");
+            System.exit(1);
         }
+        System.out.println("");
     }
 
-    public static void printFibonacciSequence(ArrayList<Integer> list){
-        for (Integer element : list) {
-            System.out.print(element.toString() + " ");
-        }
-    }
+    public static boolean validateArguments(String[] args){
 
+        String opcion_str = args[0];
+        if(opcion_str.contains("-o=")){
+
+            String rest_option = opcion_str.replaceAll("-o=" , "");
+
+            if (rest_option.length() == 2){
+                    switch (rest_option){
+                        case "hd":
+                            fibo.setOrientation(Orientation.HORIZONTAL);
+                            fibo.setOrder(Order.DIRECT);
+                            break;
+                        case "hi":
+                            fibo.setOrientation(Orientation.HORIZONTAL);
+                            fibo.setOrder(Order.INVERSE);
+                            break;
+                        case "vd":
+                            fibo.setOrientation(Orientation.VERTICAL);
+                            fibo.setOrder(Order.DIRECT);
+                            break;
+                        case "vi":
+                            fibo.setOrientation(Orientation.VERTICAL);
+                            fibo.setOrder(Order.INVERSE);
+                            break;
+                        default:
+                            System.out.println("Opción no válida");
+                            return false;
+                    }
+                    return true;
+            }
+        }
+        System.out.println("Opción no válida");
+        return false;
+    }
 }
