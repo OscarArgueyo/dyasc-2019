@@ -21,3 +21,8 @@ hs_err_pid*
 .project
 
 */.idea/
+/.idea/.gitignore
+/.idea/dyasc-2019.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml

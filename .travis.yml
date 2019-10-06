@@ -1,4 +1,4 @@
 language: java
 sudo: false
-before_script: cd fibo
+before_script: cd fibo3
 script: mvn clean verify

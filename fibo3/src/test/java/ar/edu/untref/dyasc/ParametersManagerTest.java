@@ -2,10 +2,13 @@ package ar.edu.untref.dyasc;
 
 import org.junit.Test;
 
-public class GestionParametrosTest {
+public class ParametersManagerTest {
 
     @Test
-    public void unaPrueba(){
-        GestorParametros gestor = GestorParametros();
+    public void analizarLargoSecuencia(){
+        String[] args = {"1"};
+        ParametersManager manager = new ParametersManager(args);
+
+        manager.processParameters();
     }
 }
