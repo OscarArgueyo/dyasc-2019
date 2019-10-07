@@ -57,5 +57,21 @@ public class ParametersManagerTest {
         assertTrue(manager.isVerticalOriented());
     }
 
+    @Test
+    public void analizarParametrosdeSumaMandandoUnaOperacionInvalida(){
+        String[] args = {"2" , "-m=p"};
+        ParametersManager manager = new ParametersManager(args);
+        manager.processParameters();
+        assertFalse(manager.hasOperationSum());
+    }
+
+    @Test
+    public void analizarParametrosdeSumaMandandoUnaOperacionValida(){
+        String[] args = {"2" , "-m=s"};
+        ParametersManager manager = new ParametersManager(args);
+        manager.processParameters();
+        assertTrue(manager.hasOperationSum());
+    }
+
 
 }

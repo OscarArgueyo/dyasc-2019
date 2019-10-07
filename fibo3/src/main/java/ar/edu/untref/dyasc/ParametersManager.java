@@ -7,6 +7,7 @@ public class ParametersManager {
     private boolean valid = false;
     private Order order = Order.DIRECT;
     private Orientation orientation = Orientation.HORIZONTAL;
+    private OperationMode mode;
 
     ParametersManager(String[] params){
         this.setParameters(params);
@@ -44,16 +45,32 @@ public class ParametersManager {
 
 
             this.analizeOutputOption(option_type , option_value);
-            //this.analizeModeOperationOption(option_type , option_value);
+            this.analizeModeOperationOption(option_type , option_value);
             //this.analizeFileOption(option_type , option_value);
 
 
         }
     }
 
+    private void analizeModeOperationOption(String option_type, String option_value) {
+        if (option_type.equalsIgnoreCase("m")) {
+
+            if(option_value.equalsIgnoreCase("s")){
+                this.setOperationSum();
+            }else{
+                System.out.println("No es un metodo de operacion valida.");
+            }
+
+        }
+    }
+
+    private void setOperationSum() {
+        this.setMode(OperationMode.SUM);
+    }
+
     private void analizeOutputOption(String option_type, String option_value) {
 
-        System.out.println(option_type);
+
         if (option_type.equalsIgnoreCase("o")){
             char order_value = option_value.toLowerCase().charAt(1);
             char orientation_value = option_value.charAt(0);
@@ -148,5 +165,17 @@ public class ParametersManager {
 
     public Orientation getOrientation(){
         return this.orientation;
+    }
+
+    public boolean hasOperationSum() {
+        return this.getMode() == OperationMode.SUM;
+    }
+
+    public OperationMode getMode() {
+        return mode;
+    }
+
+    public void setMode(OperationMode mode) {
+        this.mode = mode;
     }
 }
