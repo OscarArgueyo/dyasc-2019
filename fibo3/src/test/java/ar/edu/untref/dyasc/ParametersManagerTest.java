@@ -32,5 +32,30 @@ public class ParametersManagerTest {
         assertTrue(manager.isDirectOrder());
     }
 
+    @Test
+    public void analizarParametrosdeImpresionInversa(){
+        String[] args = {"2" , "-o=hi"};
+        ParametersManager manager = new ParametersManager(args);
+        manager.processParameters();
+        assertTrue(manager.isInverseOrder());
+    }
+
+    @Test
+    public void analizarParametrosdeImpresionHorizontal(){
+        String[] args = {"2" , "-o=hi"};
+        ParametersManager manager = new ParametersManager(args);
+        manager.processParameters();
+        assertTrue(manager.isHorizontalOriented());
+    }
+
+    @Test
+    public void analizarParametrosdeImpresionVertical(){
+        String[] args = {"2" , "-o=vi"};
+        ParametersManager manager = new ParametersManager(args);
+        manager.processParameters();
+        assertFalse(manager.isHorizontalOriented());
+        assertTrue(manager.isVerticalOriented());
+    }
+
 
 }

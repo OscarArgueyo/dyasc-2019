@@ -6,6 +6,7 @@ public class ParametersManager {
     private int sequenceLength;
     private boolean valid = false;
     private Order order = Order.DIRECT;
+    private Orientation orientation = Orientation.HORIZONTAL;
 
     ParametersManager(String[] params){
         this.setParameters(params);
@@ -55,20 +56,37 @@ public class ParametersManager {
         System.out.println(option_type);
         if (option_type.equalsIgnoreCase("o")){
             char order_value = option_value.toLowerCase().charAt(1);
-            //char orientation_value = option_value.charAt(0);
+            char orientation_value = option_value.charAt(0);
 
             if (order_value == 'd'){
                 this.setDirectOrder();
             }
 
-            if (order_value == 'i'){
+            if (orientation_value == 'v'){
+                this.setVerticalOrientation();
+            }
 
+            if (orientation_value == 'h'){
+                this.setHorizontalOrientation();
+            }
+
+            if (order_value == 'i'){
                 this.setInverseOrder();
             }
+
+
 
         }else{
             System.out.println("No es un valor valido de output.");
         }
+    }
+
+    private void setVerticalOrientation() {
+        this.setOrientation(Orientation.VERTICAL);
+    }
+
+    private void setHorizontalOrientation() {
+        this.setOrientation(Orientation.HORIZONTAL);
     }
 
     public int getSequenceLength() {
@@ -90,7 +108,6 @@ public class ParametersManager {
     private String removeCharacter(String word , String character){
         String modified_word = word.replace(character , "");
         return modified_word;
-
     }
 
     public Order getOrder() {
@@ -115,5 +132,21 @@ public class ParametersManager {
 
     public void setInverseOrder(){
         this.setOrder(Order.INVERSE);
+    }
+
+    public boolean isHorizontalOriented() {
+        return this.orientation == Orientation.HORIZONTAL;
+    }
+
+    public boolean isVerticalOriented() {
+        return this.orientation == Orientation.VERTICAL;
+    }
+
+    public void setOrientation(Orientation orientation) {
+        this.orientation = orientation;
+    }
+
+    public Orientation getOrientation(){
+        return this.orientation;
     }
 }
