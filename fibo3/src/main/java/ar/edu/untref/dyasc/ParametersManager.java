@@ -5,6 +5,7 @@ public class ParametersManager {
     private String[] parameters;
     private int sequenceLength;
     private boolean valid = false;
+    private Order order = Order.DIRECT;
 
     ParametersManager(String[] params){
         this.setParameters(params);
@@ -35,11 +36,38 @@ public class ParametersManager {
         }
         if (parameter.startsWith("-") && parameter.contains("=")) {
             String option = this.removeCharacter(parameter , "-");
-            System.out.println(option);
+
             String[] option_tokens = option.split("=");
             String option_type = option_tokens[0];
             String option_value = option_tokens[1];
 
+
+            this.analizeOutputOption(option_type , option_value);
+            //this.analizeModeOperationOption(option_type , option_value);
+            //this.analizeFileOption(option_type , option_value);
+
+
+        }
+    }
+
+    private void analizeOutputOption(String option_type, String option_value) {
+
+        System.out.println(option_type);
+        if (option_type.equalsIgnoreCase("o")){
+            char order_value = option_value.toLowerCase().charAt(1);
+            //char orientation_value = option_value.charAt(0);
+
+            if (order_value == 'd'){
+                this.setDirectOrder();
+            }
+
+            if (order_value == 'i'){
+
+                this.setInverseOrder();
+            }
+
+        }else{
+            System.out.println("No es un valor valido de output.");
         }
     }
 
@@ -63,5 +91,29 @@ public class ParametersManager {
         String modified_word = word.replace(character , "");
         return modified_word;
 
+    }
+
+    public Order getOrder() {
+        return this.order;
+    }
+
+    public boolean isDirectOrder(){
+        return this.order == Order.DIRECT;
+    }
+
+    public boolean isInverseOrder(){
+        return this.order == Order.INVERSE;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public void setDirectOrder(){
+        this.setOrder(Order.DIRECT);
+    }
+
+    public void setInverseOrder(){
+        this.setOrder(Order.INVERSE);
     }
 }

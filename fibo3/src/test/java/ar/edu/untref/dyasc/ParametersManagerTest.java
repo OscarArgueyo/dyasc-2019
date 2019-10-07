@@ -1,8 +1,7 @@
 package ar.edu.untref.dyasc;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class ParametersManagerTest {
 
@@ -23,6 +22,14 @@ public class ParametersManagerTest {
         manager.processParameters();
 
         assertFalse(manager.isValid());
+    }
+
+    @Test
+    public void analizarParametrosdeImpresionDirecta(){
+        String[] args = {"2" , "-o=hd"};
+        ParametersManager manager = new ParametersManager(args);
+        manager.processParameters();
+        assertTrue(manager.isDirectOrder());
     }
 
 
