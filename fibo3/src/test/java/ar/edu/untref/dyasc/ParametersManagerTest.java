@@ -74,4 +74,12 @@ public class ParametersManagerTest {
     }
 
 
+    @Test
+    public void analizarParametrosdeGuardarEnArchivo(){
+        String[] args = {"2" , "-f=salida.txt"};
+        ParametersManager manager = new ParametersManager(args);
+        manager.processParameters();
+        assertTrue(manager.hasSaveFileOption());
+    }
+
 }

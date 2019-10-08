@@ -8,6 +8,8 @@ public class ParametersManager {
     private Order order = Order.DIRECT;
     private Orientation orientation = Orientation.HORIZONTAL;
     private OperationMode mode;
+    private String filepath;
+    private boolean saveFile = false;
 
     ParametersManager(String[] params){
         this.setParameters(params);
@@ -46,21 +48,24 @@ public class ParametersManager {
 
             this.analizeOutputOption(option_type , option_value);
             this.analizeModeOperationOption(option_type , option_value);
-            //this.analizeFileOption(option_type , option_value);
+            this.analizeFileOption(option_type , option_value);
+        }
+    }
 
-
+    private void analizeFileOption(String option_type, String option_value) {
+        if (option_type.equalsIgnoreCase("f")){
+            this.filepath = option_value;
+            this.setSaveFile(true);
         }
     }
 
     private void analizeModeOperationOption(String option_type, String option_value) {
         if (option_type.equalsIgnoreCase("m")) {
-
             if(option_value.equalsIgnoreCase("s")){
                 this.setOperationSum();
             }else{
                 System.out.println("No es un metodo de operacion valida.");
             }
-
         }
     }
 
@@ -73,7 +78,7 @@ public class ParametersManager {
 
         if (option_type.equalsIgnoreCase("o")){
             char order_value = option_value.toLowerCase().charAt(1);
-            char orientation_value = option_value.charAt(0);
+            char orientation_value = option_value.toLowerCase().charAt(0);
 
             if (order_value == 'd'){
                 this.setDirectOrder();
@@ -90,11 +95,6 @@ public class ParametersManager {
             if (order_value == 'i'){
                 this.setInverseOrder();
             }
-
-
-
-        }else{
-            System.out.println("No es un valor valido de output.");
         }
     }
 
@@ -177,5 +177,25 @@ public class ParametersManager {
 
     public void setMode(OperationMode mode) {
         this.mode = mode;
+    }
+
+    public boolean hasSaveFileOption() {
+        return this.isSaveFile() == true;
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
+
+    public void setSaveFile(boolean saveFile){
+        this.saveFile = saveFile;
+    }
+
+    public boolean isSaveFile() {
+        return this.saveFile;
     }
 }
