@@ -66,4 +66,11 @@ public class Fibonacci
     public void setOrder(Order order){
         this.order = order;
     }
+
+    public int sumSequence() {
+        int sum = 0;
+        for (int number:this.numbers) sum += number;
+
+        return sum;
+    }
 }
