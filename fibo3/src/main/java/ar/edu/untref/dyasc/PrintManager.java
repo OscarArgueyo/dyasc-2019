@@ -7,6 +7,8 @@ public class PrintManager implements Printable {
     private Fibonacci fibonacci;
 
     private StringBuilder output_print;
+    private boolean isSumatory;
+    private boolean isVertical;
 
     PrintManager(Fibonacci fibonacci){
 
@@ -22,10 +24,25 @@ public class PrintManager implements Printable {
         this(fibonacci);
         if(isSumatory){
             this.addSumString();
-        }else{
-            this.getOutputPrint().append("\n");
         }
+    }
 
+    PrintManager(Fibonacci fibonacci, boolean isSumatory , boolean isVertical){
+        this(fibonacci , isSumatory);
+        this.addListString(isVertical);
+    }
+
+    private void addListString(boolean isVertical) {
+
+        this.getOutputPrint().append(":");
+        if(isVertical) this.getOutputPrint().append("\n");
+
+        for (int item:this.getFibonacci().getSequenceList()){
+            this.getOutputPrint().append(" " + String.valueOf(item));
+            if (isVertical){
+                this.getOutputPrint().append("\n");
+            }
+        }
     }
 
     private void addSumString() {

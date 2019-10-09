@@ -26,4 +26,19 @@ public class PrintManagerTest {
         assertEquals("fibo<5>s: 7" , printer.print());
 
     }
+
+    @Test
+    public void imprimirSecuenciaEnFormaDeListaHorizontalDirecta(){
+
+        Fibonacci fibo = new Fibonacci();
+        fibo.generateSequence(5);
+        fibo.setOrder(Order.DIRECT);
+        fibo.setOrientation(Orientation.HORIZONTAL);
+        boolean sumatory_form = false;
+        PrintManager printer = new PrintManager(fibo, sumatory_form , false);
+
+        assertEquals(
+                "fibo<5>: 0 1 1 2 3" , printer.print());
+
+    }
 }
