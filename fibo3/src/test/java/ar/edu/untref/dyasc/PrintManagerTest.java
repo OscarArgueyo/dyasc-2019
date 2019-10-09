@@ -55,4 +55,34 @@ public class PrintManagerTest {
                 "fibo<5>: 3 2 1 1 0" , printer.print());
 
     }
+
+    @Test
+    public void imprimirSecuenciaEnFormaDeListaVerticalDirecta(){
+
+        Fibonacci fibo = new Fibonacci();
+        fibo.generateSequence(1);
+        fibo.setOrder(Order.DIRECT);
+        fibo.setOrientation(Orientation.VERTICAL);
+        boolean sumatory_form = false;
+        PrintManager printer = new PrintManager(fibo, sumatory_form , true);
+
+        assertEquals(
+                "fibo<1>:\n 0\n" , printer.print());
+
+    }
+
+    @Test
+    public void imprimirSecuenciaEnFormaDeListaVerticalInversa(){
+
+        Fibonacci fibo = new Fibonacci();
+        fibo.generateSequence(2);
+        fibo.setOrder(Order.INVERSE);
+        fibo.setOrientation(Orientation.VERTICAL);
+        boolean sumatory_form = false;
+        PrintManager printer = new PrintManager(fibo, sumatory_form , true);
+
+        assertEquals(
+                "fibo<2>:\n 1\n 0\n" , printer.print());
+
+    }
 }
