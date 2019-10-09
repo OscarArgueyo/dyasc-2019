@@ -2,13 +2,17 @@ package ar.edu.untref.dyasc;
 
 import java.util.Collections;
 
-public class PrintManager {
+public class PrintManager implements Printable {
 
     private Fibonacci fibonacci;
+
     private StringBuilder output_print;
 
     PrintManager(Fibonacci fibonacci){
+
         this.setFibonacci(fibonacci);
+
+        this.output_print = new StringBuilder();
     }
 
     public void setFibonacci(Fibonacci fibonacci) {
@@ -39,7 +43,29 @@ public class PrintManager {
 
     }
 
-    public String getOutputPrinter() {
-        return "";
+    public StringBuilder getOutputPrint() {
+        return this.output_print;
+    }
+
+    @Override
+    public String print() {
+        this.addHeader(this.getFibonacci().getSequenceLength());
+        return this.getOutputPrint().toString();
+
+    }
+
+    @Override
+    public void printToConsole() {
+        System.out.print(this.print());
+    }
+
+    public void addHeader(int length_sequence) {
+        this.getOutputPrint()
+                .append(
+                    "fibo<".concat(
+                            String.valueOf(length_sequence)
+                    ).concat(">")
+        );
+
     }
 }

@@ -73,4 +73,8 @@ public class Fibonacci
 
         return sum;
     }
+
+    public int getSequenceLength(){
+        return this.numbers.size();
+    }
 }

@@ -6,12 +6,12 @@ import static org.junit.Assert.assertEquals;
 
 public class PrintManagerTest {
     @Test
-    public void imprimirSecuenciaEnString(){
+    public void imprimirCabeceraDeSecuenciaString(){
         Fibonacci fibo = new Fibonacci();
         PrintManager printer = new PrintManager(fibo);
-        String output_printer = printer.getOutputPrinter();
+        String output_printer = printer.print();
 
-        assertEquals("" , output_printer);
+        assertEquals("fibo<0>" , output_printer);
 
     }
 }
