@@ -9,7 +9,6 @@ public class PrintManagerTest {
     public void imprimirCabeceraDeSecuenciaString(){
         Fibonacci fibo = new Fibonacci();
         PrintManager printer = new PrintManager(fibo);
-        printer.addHeader(fibo.getSequenceLength());
         StringBuilder output_printer = printer.getOutputPrint();
 
         assertEquals("fibo<0>" , output_printer.toString());
