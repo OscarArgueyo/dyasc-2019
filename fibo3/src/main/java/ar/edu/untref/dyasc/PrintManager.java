@@ -103,6 +103,9 @@ public class PrintManager implements Printable {
                             String.valueOf(length_sequence)
                     ).concat(">")
         );
+    }
 
+    public void addText(String text){
+        this.getOutputPrint().append(text);
     }
 }
