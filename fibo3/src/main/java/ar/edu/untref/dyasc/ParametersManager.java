@@ -62,39 +62,39 @@ public class ParametersManager {
     private void analizeModeOperationOption(String option_type, String option_value) {
         if (option_type.equalsIgnoreCase("m")) {
             if(option_value.equalsIgnoreCase("s")){
-                this.setOperationSum();
-            }else{
-                System.out.println("No es un metodo de operacion valida.");
+                this.setMode(OperationMode.SUM);
+            }
+            if(option_value.equalsIgnoreCase("l")){
+                this.setMode(OperationMode.LIST);
             }
         }
-    }
-
-    private void setOperationSum() {
-        this.setMode(OperationMode.SUM);
     }
 
     private void analizeOutputOption(String option_type, String option_value) {
 
 
         if (option_type.equalsIgnoreCase("o")){
-            char order_value = option_value.toLowerCase().charAt(1);
-            char orientation_value = option_value.toLowerCase().charAt(0);
+            if (option_value.length() == 2){
+                char order_value = option_value.toLowerCase().charAt(1);
+                char orientation_value = option_value.toLowerCase().charAt(0);
 
-            if (order_value == 'd'){
-                this.setDirectOrder();
+                if (order_value == 'd'){
+                    this.setDirectOrder();
+                }
+
+                if (orientation_value == 'v'){
+                    this.setVerticalOrientation();
+                }
+
+                if (orientation_value == 'h'){
+                    this.setHorizontalOrientation();
+                }
+
+                if (order_value == 'i'){
+                    this.setInverseOrder();
+                }
             }
 
-            if (orientation_value == 'v'){
-                this.setVerticalOrientation();
-            }
-
-            if (orientation_value == 'h'){
-                this.setHorizontalOrientation();
-            }
-
-            if (order_value == 'i'){
-                this.setInverseOrder();
-            }
         }
     }
 
