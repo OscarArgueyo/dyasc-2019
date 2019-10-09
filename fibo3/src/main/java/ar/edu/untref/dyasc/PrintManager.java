@@ -29,7 +29,7 @@ public class PrintManager implements Printable {
 
     PrintManager(Fibonacci fibonacci, boolean isSumatory , boolean isVertical){
         this(fibonacci , isSumatory);
-        this.addListString(isVertical);
+        if (!isSumatory) this.addListString(isVertical);
     }
 
     private void addListString(boolean isVertical) {
@@ -93,7 +93,7 @@ public class PrintManager implements Printable {
 
     @Override
     public void printToConsole() {
-        System.out.print(this.print());
+        System.out.println(this.print());
     }
 
     public void addHeader(int length_sequence) {
