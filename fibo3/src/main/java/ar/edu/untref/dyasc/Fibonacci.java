@@ -77,4 +77,14 @@ public class Fibonacci
     public int getSequenceLength(){
         return this.numbers.size();
     }
+
+    public ArrayList<Integer> getSequenceList(){
+
+        if (this.order == Order.INVERSE){
+            Collections.reverse(this.numbers);
+        }
+
+        return this.numbers;
+
+    }
 }

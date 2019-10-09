@@ -13,6 +13,27 @@ public class PrintManager implements Printable {
         this.setFibonacci(fibonacci);
 
         this.output_print = new StringBuilder();
+
+        this.addHeader(this.getFibonacci().getSequenceLength());
+
+    }
+
+    PrintManager(Fibonacci fibonacci, boolean isSumatory){
+        this(fibonacci);
+        if(isSumatory){
+            this.addSumString();
+        }else{
+            this.getOutputPrint().append("\n");
+        }
+
+    }
+
+    private void addSumString() {
+
+        this.getOutputPrint()
+                .append("s")
+                .append(": ")
+                .append(String.valueOf(this.getFibonacci().sumSequence()));
     }
 
     public void setFibonacci(Fibonacci fibonacci) {
@@ -49,7 +70,6 @@ public class PrintManager implements Printable {
 
     @Override
     public String print() {
-        this.addHeader(this.getFibonacci().getSequenceLength());
         return this.getOutputPrint().toString();
 
     }
