@@ -6,7 +6,7 @@ public class PrintManager implements Printable {
 
     private Fibonacci fibonacci;
 
-    private StringBuilder output_print;
+    private StringBuilder outputPrint;
     private boolean isSumatory;
     private boolean isVertical;
 
@@ -14,7 +14,7 @@ public class PrintManager implements Printable {
 
         this.setFibonacci(fibonacci);
 
-        this.output_print = new StringBuilder();
+        this.outputPrint = new StringBuilder();
 
         this.addHeader(this.getFibonacci().getSequenceLength());
 
@@ -62,7 +62,7 @@ public class PrintManager implements Printable {
     }
 
     public void printSequence(){
-        this.output_print = new StringBuilder();
+        this.outputPrint = new StringBuilder();
         if (this.getFibonacci().order == Order.INVERSE){
             Collections.reverse(this.getFibonacci().numbers);
         }
@@ -82,7 +82,7 @@ public class PrintManager implements Printable {
     }
 
     public StringBuilder getOutputPrint() {
-        return this.output_print;
+        return this.outputPrint;
     }
 
     @Override

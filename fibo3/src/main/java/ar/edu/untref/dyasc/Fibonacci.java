@@ -39,25 +39,6 @@ public class Fibonacci
         }
     }
 
-    public void printSequence(){
-
-        if (this.order == Order.INVERSE){
-            Collections.reverse(this.numbers);
-        }
-
-        if(this.orientation == Orientation.VERTICAL){
-            System.out.println("");
-        }
-
-        for (Integer element : this.numbers) {
-            if(this.orientation == Orientation.VERTICAL){
-                System.out.println(element.toString());
-            }else{
-                System.out.print(element.toString() + " ");
-            }
-        }
-
-    }
 
     public void setOrientation(Orientation orientation){
         this.orientation = orientation;
