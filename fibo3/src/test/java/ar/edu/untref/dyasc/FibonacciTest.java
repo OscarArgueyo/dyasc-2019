@@ -11,13 +11,13 @@ public class FibonacciTest {
         Fibonacci fibo = new Fibonacci();
         fibo.generateSequence(4);
         int sum = fibo.sumSequence();
-        assertEquals(2, sum);
+        assertEquals(4, sum);
     }
 
     @Test
     public void sumatoriaDeSecuenciaSinGenerarla(){
         Fibonacci fibo = new Fibonacci();
         int sum = fibo.sumSequence();
-        assertEquals(1, sum);
+        assertEquals(0, sum);
     }
 }
