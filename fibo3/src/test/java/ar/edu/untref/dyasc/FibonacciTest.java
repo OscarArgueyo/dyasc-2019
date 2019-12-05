@@ -11,7 +11,7 @@ public class FibonacciTest {
         Fibonacci fibo = new Fibonacci();
         fibo.generateSequence(4);
         int sum = fibo.sumSequence();
-        assertEquals(4, sum);
+        assertEquals(2, sum);
     }
 
     @Test
